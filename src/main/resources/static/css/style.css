@@ -88,8 +88,10 @@ body {
 }
 
 #map {
-  height: 100%;
-  width: 100%;
+  display: flex;
+
+  /* Temp map error test */
+  height: 500px !important;
 }
 
 /* Live indicator badge */
