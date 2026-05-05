@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Home | Waste Wise</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <!-- Top Header -->
+    <header class="top-header">
+      <div class="logo">
+        <img src="/images/logo-image.png" alt="Logo Icon" class="logo-icon" />
+        <img src="/images/logo-text.png" alt="Waste Wise" class="logo-text" />
+      </div>
+      <h1>Battaramulla Garbage Bin Map</h1>
+      <span class="live-badge">&#9679; LIVE</span>
+    </header>
+
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <nav>
+          <a href="/">Map</a>
+          <a href="/schedule">Schedule</a>
+          <a href="/jobs">Jobs</a>
+        </nav>
+        <div class="sidebar-footer">
+          <a href="/register">Sign up</a>
+          <a href="/login">Login</a>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <div id="map"></div>
+      </div>
+    </div>
+
+    <script src="/js/map-config.js"></script>
+    <script src="/js/map.js"></script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiF-J7H9LcHCmPynCmsS7JaDp9bHMnLQY&callback=initMap"
+    ></script>
+  </body>
+</html>

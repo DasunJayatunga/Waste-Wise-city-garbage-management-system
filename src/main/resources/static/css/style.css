@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Top Header */
+.top-header {
+  background-color: #32c54b;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  width: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  height: 45px;
+  margin-right: 10px;
+}
+
+.logo-text {
+  height: 42px;
+}
+
+.top-header h1 {
+  flex: 1;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
+}
+
+/* Wrapper (sidebar + content sit side by side) */
+.wrapper {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 200px;
+  background-color: #32c54b;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 15px 20px;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  background-color: #1b5e20;
+  color: white;
+}
+
+.sidebar-footer {
+  display: flex;
+  gap: 10px;
+  padding: 15px 15px 15px 10px;
+}
+
+.sidebar-footer a {
+  white-space: nowrap;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  background-color: white;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+/* Live indicator badge */
+.live-badge {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: white;
+  background-color: #cc0000;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-left: auto;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Enable scrolling on citizen complaint pages */
+body.citizen-module .wrapper {
+    overflow: visible;
+}
+body.citizen-module .main-content {
+    overflow-y: auto;
+    height: auto;
+}

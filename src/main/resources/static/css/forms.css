@@ -1,0 +1,416 @@
+/* ==========================================
+   Forms.css – Unified Form Styling
+   For use on login, register, profile, etc.
+   Does NOT affect header/sidebar.
+   ========================================== */
+
+:root {
+  --form-primary: #32c54b;
+  --form-primary-dark: #27a83e;
+  --form-primary-light: #e8f5e9;
+  --form-danger: #e53935;
+  --form-danger-light: #ffebee;
+  --form-warning: #f0a500;
+  --form-warning-light: #fff8e1;
+  --form-info: #2196f3;
+  --form-info-light: #e3f2fd;
+  --form-text: #1a1a1a;
+  --form-text-light: #6c757d;
+  --form-border: #ddd;
+  --form-bg: #ffffff;
+  --form-bg-alt: #f8f9fa;
+  --form-radius: 12px;
+  --form-radius-sm: 8px;
+  --form-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+  --form-shadow-focus: 0 0 0 3px rgba(50, 197, 75, 0.2);
+  --form-transition: all 0.2s ease;
+}
+
+/* Form Shell – centers the form card */
+.form-shell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 120px);
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+}
+
+/* Form Card – main container */
+.form-card {
+  background: var(--form-bg);
+  border-radius: var(--form-radius);
+  box-shadow: var(--form-shadow);
+  overflow: hidden;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  transition: var(--form-transition);
+}
+
+/* Two-column layout (for side panel) */
+.form-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.form-layout > .form-card {
+  flex: 1;
+  margin: 0;
+  border-radius: var(--form-radius);
+}
+
+.form-layout > .form-card:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.form-layout > .form-card:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+@media (max-width: 768px) {
+  .form-layout {
+    flex-direction: column;
+  }
+  .form-layout > .form-card {
+    border-radius: var(--form-radius) !important;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Card Header */
+.form-header {
+  padding: 1.5rem 2rem 0.5rem 2rem;
+  text-align: center;
+}
+
+.form-icon {
+  font-size: 2.5rem;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.form-header h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--form-text);
+  margin-bottom: 0.25rem;
+}
+
+.form-header p {
+  color: var(--form-text-light);
+  font-size: 0.9rem;
+}
+
+/* Card Body (form area) */
+.form-body {
+  padding: 1.5rem 2rem 2rem;
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--form-text);
+  margin-bottom: 0.5rem;
+}
+
+.required {
+  color: var(--form-danger);
+  margin-left: 2px;
+}
+
+/* Inputs, selects, textareas */
+.form-control {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  border: 1px solid var(--form-border);
+  border-radius: var(--form-radius-sm);
+  background: var(--form-bg-alt);
+  transition: var(--form-transition);
+  outline: none;
+}
+
+.form-control:focus {
+  border-color: var(--form-primary);
+  background: white;
+  box-shadow: var(--form-shadow-focus);
+}
+
+.form-control.error {
+  border-color: var(--form-danger);
+  background: var(--form-danger-light);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Form row (two columns) */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 560px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+/* Checkbox & Radio groups */
+.checkbox-group,
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.checkbox-item,
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--form-text);
+}
+
+.checkbox-item input,
+.radio-item input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--form-primary);
+  cursor: pointer;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--form-radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: var(--form-transition);
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--form-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--form-primary-dark);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--form-border);
+  color: var(--form-text);
+}
+
+.btn-outline:hover {
+  border-color: var(--form-primary);
+  color: var(--form-primary);
+}
+
+.btn-full {
+  width: 100%;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Alert messages */
+.alert {
+  padding: 0.75rem 1rem;
+  border-radius: var(--form-radius-sm);
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.alert-success {
+  background: var(--form-primary-light);
+  color: #1e7e34;
+  border-left: 4px solid var(--form-primary);
+}
+
+.alert-error {
+  background: var(--form-danger-light);
+  color: #c62828;
+  border-left: 4px solid var(--form-danger);
+}
+
+.alert-warning {
+  background: var(--form-warning-light);
+  color: #e65100;
+  border-left: 4px solid var(--form-warning);
+}
+
+.alert-info {
+  background: var(--form-info-light);
+  color: #0b5e7e;
+  border-left: 4px solid var(--form-info);
+}
+
+/* Spinner for buttons */
+.spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Form footer links */
+.form-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--form-text-light);
+  border-top: 1px solid var(--form-border);
+  padding-top: 1.5rem;
+}
+
+.form-footer a {
+  color: var(--form-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.form-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Extra panel (info card) */
+.form-panel {
+  background: var(--form-primary-light);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-panel h3 {
+  font-size: 1.3rem;
+  color: var(--form-primary-dark);
+  margin-bottom: 0.5rem;
+}
+
+.form-panel p {
+  color: var(--form-text);
+  line-height: 1.5;
+}
+
+.panel-list {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.panel-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.panel-item::before {
+  content: "✓";
+  color: var(--form-primary);
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .form-body {
+    padding: 1.5rem;
+  }
+  .form-header {
+    padding: 1rem 1.5rem 0;
+  }
+}
+
+/* Override wrapper overflow and set proper height */
+body.form-page .wrapper {
+  overflow: visible;
+  height: calc(100vh - var(--header-h, 64px));
+}
+
+/* Main content gets scrollbar when needed */
+body.form-page .main-content {
+  overflow-y: auto;
+  height: 100%;
+  flex: 1;
+  padding-bottom: 2rem; /* extra space at bottom */
+}
+
+/* Sidebar stays fixed – no scrolling, no overflow */
+body.form-page .sidebar {
+  overflow-y: visible;
+  height: 100%;
+  position: sticky;
+  top: 0;
+}
