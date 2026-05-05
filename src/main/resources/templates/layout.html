@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${pageTitle} ?: 'Waste Wise'">Waste Wise</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+
+    <!-- Top Header (common) -->
+    <header class="top-header">
+        <div class="logo">
+            <img th:src="@{/images/logo-image.png}" alt="Logo Icon" class="logo-icon" />
+            <img th:src="@{/images/logo-text.png}" alt="Waste Wise" class="logo-text" />
+        </div>
+        <h1>Battaramulla Garbage Bin Map</h1>
+        <span class="live-badge">&#9679; LIVE</span>
+    </header>
+
+    <div class="wrapper">
+        <!-- Sidebar (common) -->
+        <div class="sidebar">
+            <nav>
+                <!-- Links will be dynamic later, for now static -->
+                <a th:href="@{/}">Map</a>
+                <a th:href="@{/schedule}">Schedule</a>
+                <a th:href="@{/jobs}">Jobs</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a th:href="@{/register}">Sign up</a>
+                <a th:href="@{/login}">Login</a>
+            </div>
+        </div>
+
+        <!-- Main content - this is where child pages will inject their content -->
+        <div class="main-content" th:insert="~{::content}">
+            <!-- Default content (optional) -->
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <!-- Global scripts (can be extended by child pages if needed) -->
+    <div th:replace="~{::scripts}"></div>
+
+</body>
+</html>
