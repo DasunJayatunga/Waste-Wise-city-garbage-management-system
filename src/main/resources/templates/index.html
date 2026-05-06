@@ -4,18 +4,15 @@
     <title th:text="'Home | Waste Wise'">Home</title>
 </head>
 <body>
-    <!-- This will be inserted into the layout's th:insert -->
-    <div th:fragment="content">
-        <div id="map"></div>
-    </div>
+    <!-- Content -->
+    <div th:fragment="content" id="map"></div>
 
-    <!-- Page‑specific scripts (will replace the layout's scripts fragment) -->
-    <div th:fragment="scripts">
-        <script th:src="@{/js/map-config.js}"></script>
+    <!-- Scripts -->
+    <th:block th:fragment="scripts">
         <script th:src="@{/js/map.js}"></script>
         <script async defer
             th:src="'https://maps.googleapis.com/maps/api/js?key=AIzaSyBiF-J7H9LcHCmPynCmsS7JaDp9bHMnLQY&callback=initMap'">
         </script>
-    </div>
+    </th:block>
 </body>
 </html>

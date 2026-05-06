@@ -1,5 +1,36 @@
+// ============================================================
+// Map Configuration (formerly map-config.js)
+// ============================================================
+
+const CENTER_LOCATION = {
+  lat: 6.89750097275343,
+  lng: 79.92163713948294,
+};
+
+const MAP_BOUNDS = {
+  north: 6.915475969479552,
+  south: 6.884254212845257,
+  west: 79.91083465764962,
+  east: 79.92962417368192,
+};
+
+const MAP_STYLES = [
+  { featureType: "poi", stylers: [{ visibility: "off" }] },
+  { featureType: "transit", stylers: [{ visibility: "off" }] },
+];
+
+function getBinIcon(fillLevel) {
+  if (fillLevel < 50) return "/images/bin-icon-green.png";
+  if (fillLevel < 75) return "/images/bin-icon-orange.png";
+  return "/images/bin-icon-red.png";
+}
+
+// ============================================================
+// Map Initialisation & Logic (formerly map.js)
+// ============================================================
+
 let map;
-let binMarkers = []; // Tracks all markers so we can refresh them
+let binMarkers = [];
 
 async function initMap() {
   console.log("Map Loaded");
@@ -16,20 +47,17 @@ async function initMap() {
     styles: MAP_STYLES,
   });
 
-  // Initial load
-  await loadAndRenderBins();
+  google.maps.event.trigger(map, 'resize');
 
-  // Poll the API every 5 seconds and redraw markers
+  await loadAndRenderBins();
   setInterval(loadAndRenderBins, 5000);
 }
 
-// Fetch bins and redraw all markers
 async function loadAndRenderBins() {
   try {
     const response = await fetch("/api/bins");
     const bins = await response.json();
 
-    // Clear existing markers
     binMarkers.forEach((marker) => marker.setMap(null));
     binMarkers = [];
 
