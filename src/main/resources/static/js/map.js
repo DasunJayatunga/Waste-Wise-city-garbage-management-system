@@ -1,7 +1,4 @@
-// ============================================================
-// Map Configuration (formerly map-config.js)
-// ============================================================
-
+// Map Configuration
 const CENTER_LOCATION = {
   lat: 6.89750097275343,
   lng: 79.92163713948294,
@@ -19,16 +16,14 @@ const MAP_STYLES = [
   { featureType: "transit", stylers: [{ visibility: "off" }] },
 ];
 
+// Display bin icons based on fill level
 function getBinIcon(fillLevel) {
   if (fillLevel < 50) return "/images/bin-icon-green.png";
   if (fillLevel < 75) return "/images/bin-icon-orange.png";
   return "/images/bin-icon-red.png";
 }
 
-// ============================================================
-// Map Initialisation & Logic (formerly map.js)
-// ============================================================
-
+// Map Initialisation & Logic
 let map;
 let binMarkers = [];
 
@@ -50,9 +45,10 @@ async function initMap() {
   google.maps.event.trigger(map, 'resize');
 
   await loadAndRenderBins();
-  setInterval(loadAndRenderBins, 5000);
+  setInterval(loadAndRenderBins, 5000);   // Reload bins with updated fill levels every 5 seconds
 }
 
+// Display bins on map
 async function loadAndRenderBins() {
   try {
     const response = await fetch("/api/bins");
@@ -61,6 +57,7 @@ async function loadAndRenderBins() {
     binMarkers.forEach((marker) => marker.setMap(null));
     binMarkers = [];
 
+    // Add a bin icon in the map for each bin in database
     bins.forEach((bin) => {
       const marker = new google.maps.Marker({
         position: { lat: bin.latitude, lng: bin.longitude },
