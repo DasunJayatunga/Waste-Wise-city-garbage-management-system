@@ -4,15 +4,23 @@
     <title th:text="'Home | Waste Wise'">Home</title>
 </head>
 <body>
-    <!-- Content -->
+    <!-- Map container (content fragment) -->
     <div th:fragment="content" id="map"></div>
 
-    <!-- Scripts -->
+    <!-- Scripts fragment with Leaflet and your combined map logic -->
     <th:block th:fragment="scripts">
+        <!-- Leaflet CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+              integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+              crossorigin="" />
+
+        <!-- Leaflet JS -->
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+                integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+                crossorigin=""></script>
+
+        <!-- Your Leaflet‑based map logic -->
         <script th:src="@{/js/map.js}"></script>
-        <script async defer
-            th:src="'https://maps.googleapis.com/maps/api/js?key=AIzaSyBiF-J7H9LcHCmPynCmsS7JaDp9bHMnLQY&callback=initMap'">
-        </script>
     </th:block>
 </body>
 </html>
