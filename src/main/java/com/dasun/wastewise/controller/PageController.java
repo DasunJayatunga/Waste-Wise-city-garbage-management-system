@@ -12,4 +12,8 @@ public class PageController {
         return "index";
     }
 
+    @GetMapping("/manage-bins")
+    public String manageBins() {
+        return "manage/manage-bins";
+    }
 }
