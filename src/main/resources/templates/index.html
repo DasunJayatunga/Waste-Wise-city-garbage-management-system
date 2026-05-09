@@ -4,6 +4,10 @@
     <title th:text="'Home | Waste Wise'">Home</title>
 </head>
 <body>
+    <th:block th:fragment="page-title">
+        Battaramulla Garbage Bin Map
+    </th:block>
+
     <!-- Map container (content fragment) -->
     <div th:fragment="content" id="map"></div>
 
