@@ -1,13 +1,23 @@
 package com.dasun.wastewise.model;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Table(name = "bins")
 public class Bin {
 
@@ -16,37 +26,16 @@ public class Bin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long binId;
 
-    @Column(nullable = true)
+    @Column(unique = true, nullable = true)
     private String deviceId;
+
+    @Column(nullable = false)
     private double longitude;
+
+    @Column(nullable = false)
     private double latitude;
+
+    @Min(0) @Max(100)
     private int fillLevel;
 
-    // Default constructor
-    public Bin() {}
-
-    // Parameterized constructor
-    public Bin(Long binId, String deviceId, double longitude, double latitude, int fillLevel) {
-        this.binId = binId;
-        this.deviceId = deviceId;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.fillLevel = fillLevel;
-    }
-
-    // Getters and setters
-    public Long getBinId() { return binId; }
-    public void setBinId(Long binId) { this.binId = binId; }
-
-    public String getDeviceId() { return deviceId; }
-    public void setDeviceId(String deviceId) { this.deviceId = deviceId; }
-
-    public double getLongitude() { return longitude; }
-    public void setLongitude(double longitude) { this.longitude = longitude; }
-
-    public double getLatitude() { return latitude; }
-    public void setLatitude(double latitude) { this.latitude = latitude; }
-
-    public int getFillLevel() { return fillLevel; }
-    public void setFillLevel(int fillLevel) { this.fillLevel = fillLevel; }
 }
