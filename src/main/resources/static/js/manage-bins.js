@@ -125,15 +125,10 @@ async function addBin() {
   const deviceId = document.getElementById('deviceId').value.trim();
   const latitude = parseFloat(document.getElementById('latitude').value);
   const longitude = parseFloat(document.getElementById('longitude').value);
-  let fillLevel = parseInt(document.getElementById('fillLevel').value);
-  if (isNaN(fillLevel)) fillLevel = 0;
+  const fillLevel = 0;   // always default to 0
 
   if (isNaN(latitude) || isNaN(longitude)) {
     alert("Please click on the map to select a location first.");
-    return;
-  }
-  if (fillLevel < 0 || fillLevel > 100) {
-    alert("Fill level must be between 0 and 100.");
     return;
   }
 
@@ -145,11 +140,10 @@ async function addBin() {
     });
     if (!response.ok) throw new Error('Server error');
 
-    // Clear form
+    // Clear the form
     document.getElementById('deviceId').value = '';
     document.getElementById('latitude').value = '';
     document.getElementById('longitude').value = '';
-    document.getElementById('fillLevel').value = '';
     if (selectionMarker) {
       manageMap.removeLayer(selectionMarker);
       selectionMarker = null;
