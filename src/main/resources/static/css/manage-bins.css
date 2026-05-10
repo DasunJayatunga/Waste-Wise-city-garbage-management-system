@@ -1,0 +1,198 @@
+/* Layout for the manage page – uses local class, not global override */
+.content-wrapper {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.manage-layout {
+  display: flex;
+  flex-direction: row;
+  flex: 1;               /* 👈 stretch to fill parent's height */
+  min-height: 0;         /* prevent overflow issues */
+  overflow: hidden;
+  background-color: white;
+}
+
+/* Left Panel */
+.manage-panel {
+  width: 320px;
+  flex-shrink: 0;
+  background-color: #f9f9f9;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Rest of the CSS remains exactly as before */
+.panel-section {
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.panel-section h2 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+}
+
+.hint {
+  font-size: 0.82rem;
+  color: #555;
+  margin-bottom: 14px;
+  background: #e8f5e9;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border-left: 3px solid #32c54b;
+}
+
+/* Form */
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  background-color: white;
+  color: #333;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #32c54b;
+}
+
+.form-group input[readonly] {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+  color: #666;
+}
+
+.btn-add {
+  width: 100%;
+  padding: 10px;
+  background-color: #32c54b;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 4px;
+}
+
+.btn-add:hover {
+  background-color: #27a83e;
+}
+
+/* Bin List */
+.loading-text {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.bin-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.bin-item:hover {
+  background-color: #f0faf1;
+  border-color: #32c54b;
+}
+
+.bin-info {
+  font-size: 0.82rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.bin-info strong {
+  font-size: 0.88rem;
+  color: #111;
+}
+
+.fill-badge {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: white;
+  margin-top: 2px;
+}
+
+.fill-low {
+  background-color: #32c54b;
+}
+.fill-medium {
+  background-color: #f0a500;
+}
+.fill-high {
+  background-color: #e53935;
+}
+
+.btn-delete {
+  background: none;
+  border: 1px solid #e53935;
+  color: #e53935;
+  font-size: 0.78rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+.btn-delete:hover {
+  background-color: #e53935;
+  color: white;
+}
+
+/* Map container takes remaining horizontal space */
+#manage-map {
+  flex: 1;
+  min-height: 0;    /* important for Leaflet inside flex */
+}
+
+/* Active sidebar link */
+.sidebar a.active {
+  background-color: #1b5e20;
+  color: white;
+}
+
+/* Optional label hint */
+.optional {
+  font-weight: normal;
+  color: #888;
+  font-size: 0.78rem;
+}

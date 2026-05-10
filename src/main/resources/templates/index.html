@@ -8,6 +8,9 @@
         Battaramulla Garbage Bin Map
     </th:block>
 
+    <!-- Empty styles fragment – needed to satisfy layout.html -->
+    <th:block th:fragment="styles"></th:block>
+
     <!-- Map container (content fragment) -->
     <div th:fragment="content" id="map"></div>
 
@@ -23,8 +26,9 @@
                 integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
                 crossorigin=""></script>
 
-        <!-- Your Leaflet‑based map logic -->
-        <script th:src="@{/js/map.js}"></script>
+        <!-- Map logic -->
+        <script th:src="@{/js/map-config.js}"></script>
+        <script th:src="@{/js/index-map.js}"></script>
     </th:block>
 </body>
 </html>
