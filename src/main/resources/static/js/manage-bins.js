@@ -103,7 +103,7 @@ function renderBinList(bins) {
 
   container.innerHTML = bins.map(bin => {
     let fillClass = 'fill-low';
-    if (bin.fillLevel >= 40 && bin.fillLevel < 75) fillClass = 'fill-medium';
+    if (bin.fillLevel >= 50 && bin.fillLevel < 75) fillClass = 'fill-medium';
     else if (bin.fillLevel >= 75) fillClass = 'fill-high';
 
     return `
